@@ -60,7 +60,9 @@ System Design Preparation:
 
 Further Question Solving:
 
-- Post-September 2: Continue solving questions and practicing problems.  CAP theorem:
+- Post-September 2: Continue solving questions and practicing problems.  
+
+**CAP theorem:**
   Example Imagine you're running a lemonade stand(nimbu pani ka thela) with your friends, and you have three goals:
 1. Consistency (C): Every customer should get the same lemonade recipe, no matter who serves it.
 2. Availability (A): The stand should always be open, so no customer leaves without lemonade.
@@ -85,7 +87,9 @@ Further Question Solving:
     * Discuss what happens during network partitions. How does your system handle it? Does it favor availability by serving potentially outdated data, or does it reject requests to maintain consistency?
 5. Evolving the System:
     * Mention that as requirements evolve, the emphasis on CAP properties might change. Discuss how the system might adapt to new needs.   
-      Horizontal vs. Vertical scaling  Horizontal and vertical scaling can be explained using a simple lemonade stand analogy:
+
+**Horizontal vs. Vertical scaling**
+      Horizontal and vertical scaling can be explained using a simple lemonade stand analogy:
       Vertical Scaling (Scaling Up):
       Imagine you have a single lemonade stand, and it’s getting super busy with lots of customers. To handle the extra demand, you decide to upgrade your stand:
 * You get a bigger, more efficient lemonade maker.
@@ -103,7 +107,8 @@ This is horizontal scaling—you’re “scaling out” by adding more stands to
 * Horizontal Scaling: Opening additional lemonade stands in different neighborhoods to serve more people across a wider area.
   In a nutshell: Vertical scaling is about making one stand stronger, while horizontal scaling is about adding more stands to spread the load.   Load Balancing 
 Imagine you have several lemonade stands in different locations, all part of your lemonade business. On a hot day, lots of customers are coming to get lemonade, but some stands are busier than others. You want to make sure that all your customers are served quickly and efficiently without any stand getting overwhelmed. 
-What is Load Balancing?
+
+**What is Load Balancing?**
   Load balancing is like having a helper who stands at the entrance to your lemonade business and directs customers to the stand that has the least number of people waiting. The goal is to spread out the customers evenly across all your stands so no single stand is too crowded, and everyone gets served quickly.
   Example:
 * You have three lemonade stands: Stand A, Stand B, and Stand C.
@@ -123,7 +128,7 @@ What is Load Balancing?
 3. Improves Customer Experience: Customers get their lemonade faster because they are sent to the stand with the shortest wait time.
    In the digital world, load balancers work similarly by distributing network traffic across multiple servers to ensure no single server becomes too overwhelmed, leading to faster service and better performance.
   
-Latency, Throughput, and Availability 
+**Latency, Throughput, and Availability **
 Imagine you run a popular lemonade business. You want to make sure your customers are happy by serving them quickly, serving as many as possible, and always being open. Let’s break down these goals in simple lemonade stand terms:
    Latency:
    Latency is like the time it takes for a customer to get their lemonade after they place an order. If it takes a long time to serve each customer, they might get frustrated.
@@ -148,7 +153,7 @@ Imagine you run a popular lemonade business. You want to make sure your customer
 * Availability: The percentage of time a system is up and running, ready to handle requests.
   Just like in your lemonade business, the goal is to minimize latency, maximize throughput, and ensure high availability to keep customers happy.
 
-Sharding vs. Partitioning 
+**Sharding vs. Partitioning **
 Imagine your lemonade business has grown so much that you now have multiple lemonade stands in different neighborhoods. You need a way to manage all your stands and keep track of your sales, ingredients, and customer preferences.
 Partitioning:
 Partitioning is like organizing your lemonade stands based on different criteria, and each partition handles a specific aspect of your business.
@@ -167,7 +172,7 @@ Partitioning is like organizing your lemonade stands based on different criteria
 * Sharding: You split customer data by last name (A-M, N-Z) so that no single stand has to manage all the customer information.
   In the digital world, both sharding and partitioning are used to break down large databases or systems into smaller, more manageable pieces, but they do so based on different strategies—partitioning by broader categories and sharding by finer details. 
 
-NoSQL vs. SQL Databases
+**NoSQL vs. SQL Databases**
 Imagine your lemonade business has grown so large that you need a system to keep track of all your sales, ingredients, customer preferences, and locations. You have two options for organizing this information: SQL databases and NoSQL databases.
 SQL Databases:
 SQL (Structured Query Language) databases are like organizing your lemonade business using a detailed, structured recipe book.
@@ -193,7 +198,7 @@ SQL (Structured Query Language) databases are like organizing your lemonade busi
   In the digital world, SQL databases are great for structured data and complex queries, while NoSQL databases shine in situations where flexibility, scalability, and handling diverse data types are more important.
 
 
-Caching and Cache Update Strategies
+**Caching and Cache Update Strategies**
 Imagine you run a lemonade stand and want to serve your customers as quickly as possible. You have a strategy to handle popular items and keep everything running smoothly, especially when dealing with frequent orders.
 Caching:
 Caching is like having a special shelf at your lemonade stand where you keep a few of the most popular lemonade flavors ready to go. Instead of making each flavor from scratch every time a customer orders, you have some pre-made and ready to serve. This way, you can quickly grab a cup and hand it to the customer, speeding up service.
@@ -218,7 +223,7 @@ Caching is like having a special shelf at your lemonade stand where you keep a f
   In the digital world, caching speeds up access to frequently used data, and update strategies ensure that cached data remains accurate and current.
 
 
-Content Delivery Network (CDN)
+**Content Delivery Network (CDN)**
 Imagine you have multiple lemonade stands in different neighborhoods, and each stand serves lemonade to nearby customers. You want to make sure that customers in all neighborhoods can get their lemonade quickly and efficiently.
 What is a CDN?
 A Content Delivery Network (CDN) is like having a network of lemonade stands strategically placed in various neighborhoods. Instead of customers having to travel to a central stand that's far away, you have stands close to them that can serve them quickly.
@@ -240,7 +245,7 @@ How It Works:
 * Purpose: To deliver lemonade (or content) faster and more reliably to people based on their location.
   In the digital world, a CDN ensures that website content is delivered quickly and efficiently to users from servers close to their geographic location, enhancing speed and performance.
 
-Design Issues in Distributed Systems in Lemon Terms
+**Design Issues in Distributed Systems**
 Imagine your lemonade business has grown, and you now have multiple lemonade stands across different neighborhoods. Running this larger operation involves several challenges, just like managing a distributed system in technology.
 1. Consistency:
    Consistency means making sure all your lemonade stands use the same recipe and keep the same quality.
