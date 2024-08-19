@@ -8,6 +8,15 @@ public class MinimumSizeSubarraySum {
 
     }
 
+    //algo
+    //left =0, right=0
+    //left with 1 size window from extreme left
+    //increment right till u achieve target specified in
+    //once u achieve the target by minimizing window
+    //keep increasing right till you get (sum>=target)
+    //then update minLen
+    //and try to increase left pointer if check sum>=target
+    //this way we can find minimum length
     public int minSubArrayLen(int target, int[] nums) {
         int left = 0, right = 0;
         int minLen = Integer.MAX_VALUE;
