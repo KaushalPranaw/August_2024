@@ -18,8 +18,8 @@ public class SpiralMatrix {
         int n = matrix[0].length;
         List<Integer> ans = new ArrayList<>();
 
-        int left = 0, right = m - 1;
-        int top = 0, bottom = n - 1;
+        int left = 0, right = n - 1;
+        int top = 0, bottom = m - 1;
 
         while (top <= bottom && left <= right) {
             //left to right - (top is constant)
