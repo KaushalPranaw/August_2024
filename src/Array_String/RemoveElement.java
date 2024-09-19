@@ -10,15 +10,14 @@ public class RemoveElement {
         System.out.println(Arrays.toString(nums));
     }
 
-    public int removeElement(int[] nums, int val) {
-        int index = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != val) {
-                nums[index] = nums[i];
-                index++;
+    private int removeElement(int[] nums, int val) {
+        int nonEqualIndex=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=val){
+                nums[nonEqualIndex]=nums[i];
+                nonEqualIndex++;
             }
         }
-        return index;
-
+        return nonEqualIndex;
     }
 }

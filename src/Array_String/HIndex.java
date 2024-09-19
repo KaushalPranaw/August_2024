@@ -7,7 +7,26 @@ public class HIndex {
 
     }
 
-    public int hIndex(int[] citations) {
+    private int hIndex(int[] citations) {
+        int n = citations.length;
+        int countArray[] = new int[n + 1];
+        for (int c : citations) {
+            if (c > n) {
+                countArray[n]++;
+            } else {
+                countArray[c]++;
+            }
+        }
+        int count = 0;
+        for (int i = n; i >= 0; i--) {
+            count += countArray[i];
+            if (count >= i)
+                return i;
+        }
+        return -1;
+    }
+
+    /*public int hIndex(int[] citations) {
         int n = citations.length;
         int[] countArray = new int[n + 1];
 
@@ -27,5 +46,5 @@ public class HIndex {
                 return i;
         }
         return -1;
-    }
+    }*/
 }
