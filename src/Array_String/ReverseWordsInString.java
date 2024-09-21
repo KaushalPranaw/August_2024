@@ -8,16 +8,16 @@ public class ReverseWordsInString {
     }
 
     public String reverseWords(String s) {
-        String[] sArray = s.split(" ");
-        int left = 0, right = sArray.length - 1;
+        String[] sa = s.split(" ");
+        int left = 0, right = sa.length - 1;
         while (left < right) {
-            String temp = sArray[left];
-            sArray[left] = sArray[right];
-            sArray[right] = temp;
+            String t = sa[left];
+            sa[left] = sa[right];
+            sa[right] = t;
             left++;
             right--;
         }
-        return String.join(" ", sArray);
+        return String.join(" ", sa);
 
     }
 }

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class JumpGame {
     public static void main(String[] args) {
-        int[] nums = {2, 3, 1, 1, 4};
+        int[] nums = {2, 2, 1, 0, 4};
         System.out.println(new JumpGame().canJump(nums));
 
     }
@@ -16,12 +16,25 @@ public class JumpGame {
         for (int i = 0; i < n; i++) {
             if (maxReachable == n - 1)
                 return true;
+            if (maxReachable < i) {
+                return false;
+            }
+            maxReachable = Math.max(maxReachable, i + nums[i]);
+        }
+        return true;
+    }
+    /*public boolean canJump(int[] nums) {
+        int n = nums.length;
+        int maxReachable = 0;
+        for (int i = 0; i < n; i++) {
+            if (maxReachable == n - 1)
+                return true;
             if (i > maxReachable)
                 return false;
             maxReachable = Math.max(maxReachable, i + nums[i]);
         }
         return true;
-    }
+    }*/
 
     //bottom up
     /*private boolean canJump(int[] nums) {

@@ -12,7 +12,35 @@ public class RotateArray {
 
     }
 
-    public void rotate(int[] nums, int k) {
+    private void rotate(int[] nums, int k) {
+        //if k >nums.length
+        k = k % nums.length;
+
+        //check if size is 1
+        if (nums.length == 1 || k == 0)
+            return;
+
+        //reverse all elements
+        reverse(nums, 0, nums.length-1);
+
+        //reverse k elements
+        reverse(nums, 0, k-1);
+
+        //reverse n-k elements
+        reverse(nums, k, nums.length-1);
+    }
+
+    private void reverse(int[] nums, int l, int r) {
+        while (l < r) {
+            int t = nums[l];
+            nums[l] = nums[r];
+            nums[r] = t;
+            l++;
+            r--;
+        }
+    }
+
+    /*public void rotate(int[] nums, int k) {
         // Handle cases where k is larger than array length
         k = k % nums.length;
 
@@ -44,5 +72,5 @@ public class RotateArray {
             left++;
             right--;
         }
-    }
+    }*/
 }

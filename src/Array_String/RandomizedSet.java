@@ -14,38 +14,43 @@ public class RandomizedSet {
     Map<Integer, Integer> map;
     Random random = new Random();
 
-
     public RandomizedSet() {
-        list = new ArrayList<>();
-        map = new HashMap<>();
+        this.list = new ArrayList<>();
+        this.map = new HashMap<>();
     }
 
     public boolean insert(int val) {
-        if (map.containsKey(val))
+        if (map.containsKey(val)) {
             return false;
+        }
         map.put(val, list.size());
         list.add(val);
         return true;
-
     }
 
     public boolean remove(int val) {
-        if (!map.containsKey(val))
+        if (!map.containsKey(val)) {
             return false;
-        int pos = map.get(val);
-        if (pos != (list.size() - 1)) {
-            int lastElement = list.get(list.size() - 1);
-            list.set(pos, lastElement);
-            map.put(lastElement, pos);
         }
-        list.remove(list.size() - 1);
+        int pos = map.get(val);
+        if (pos != list.size() - 1) {
+            //we have to swap then
+            int last = list.get(list.size() - 1);
+            //and now set in list and in map
+            list.set(pos, last);
+            map.put(last, pos);
+        }
         map.remove(val);
+        list.remove(list.size() - 1);
         return true;
+
     }
 
     public int getRandom() {
-        int randomInt = random.nextInt(list.size());
-        return list.get(randomInt);
+        int randomElement = random.nextInt(list.size());
+
+        return list.get(randomElement);
+
     }
 
 
