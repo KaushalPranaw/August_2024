@@ -21,13 +21,12 @@ public class RotateImage {
     }
 
     private void reverseMat(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            int left = 0;
-            int right = matrix.length - 1;
-            while (left < right) {
-                int t = matrix[i][left];
-                matrix[i][left] = matrix[i][right];
-                matrix[i][right] = t;
+        for(int i=0;i<matrix.length;i++){
+            int left=0, right=matrix[0].length-1;
+            while (left<right){
+                int t=matrix[i][left];
+                matrix[i][left]=matrix[i][right];
+                matrix[i][right]=t;
                 left++;
                 right--;
             }
@@ -36,11 +35,12 @@ public class RotateImage {
 
     private void transpose(int[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j <= i; j++) {
-                //System.out.println(""+i+j+"  "+j+i);
-                int t = matrix[i][j];
+            for (int j = i + 1; j < matrix[0].length; j++) {
+
+                int temp = matrix[i][j];
                 matrix[i][j] = matrix[j][i];
-                matrix[j][i] = t;
+                matrix[j][i] = temp;
+
             }
         }
 
