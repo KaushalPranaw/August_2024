@@ -23,25 +23,23 @@ public class AddTwoNumbers {
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode dummy = new ListNode(0);
+        ListNode dummy = new ListNode(-1);
         ListNode cur = dummy;
         int carry = 0;
-        while (l1 != null && l2 != null) {
-            int digit1 = l1 != null ? l1.val : 0;
-            int digit2 = l2 != null ? l2.val : 0;
-            int sum = digit1 + digit2 + carry;
+        while (l1 != null || l2 != null) {
+            int x = l1 != null ? l1.val : 0;
+            int y = l2 != null ? l2.val : 0;
+            int sum = x + y + carry;
             carry = sum / 10;
             cur.next = new ListNode(sum % 10);
-            cur = cur.next;
-            if (l1 != null) {
+            if (l1 != null)
                 l1 = l1.next;
-            }
             if (l2 != null)
                 l2 = l2.next;
+            cur = cur.next;
         }
-        if (carry != 0) {
+        if (carry != 0)
             cur.next = new ListNode(carry);
-        }
         return dummy.next;
     }
 }
