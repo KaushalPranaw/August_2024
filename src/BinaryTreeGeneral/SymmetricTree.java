@@ -35,21 +35,22 @@ public class SymmetricTree {
     }
 
     public boolean isSymmetric(TreeNode root) {
-        if (root == null)
+        if(root==null)
             return true;
+
         return helper(root.left, root.right);
-
     }
 
-    private boolean helper(TreeNode leftNode, TreeNode rightNode) {
-        if (leftNode == null && rightNode == null) {
+    private boolean helper(TreeNode nl, TreeNode nr) {
+        if(nl==null && nr==null)
             return true;
-        }
-        if (leftNode == null || rightNode == null)
+        if(nl==null || nr==null)
             return false;
-        if (leftNode.val != rightNode.val) {
+        if(nl.val!=nr.val)
             return false;
-        }
-        return helper(leftNode.left, rightNode.right) && helper(leftNode.right, rightNode.left);
+
+        return helper(nl.left, nr.right) && helper(nl.right, nr.left);
     }
+
+
 }
