@@ -50,4 +50,13 @@ public class TreeNode {
     public void setRight(TreeNode right) {
         this.right = right;
     }
+
+    public void printInOrder(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        printInOrder(node.left);
+        System.out.print(node.val + " ");
+        printInOrder(node.right);
+    }
 }
