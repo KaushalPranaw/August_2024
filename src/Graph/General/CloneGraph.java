@@ -1,4 +1,4 @@
-package GraphGeneral;
+package Graph.General;
 
 import java.util.HashMap;
 import java.util.Map;

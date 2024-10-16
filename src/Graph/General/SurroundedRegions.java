@@ -1,4 +1,4 @@
-package GraphGeneral;
+package Graph.General;
 
 public class SurroundedRegions {
     public static void main(String[] args) {

@@ -1,37 +1,36 @@
-package GraphGeneral;
+package Graph.General;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class CourseScheduleII {
+public class CourseSchedule {
     public static void main(String[] args) {
-        CourseScheduleII cs = new CourseScheduleII();
+        CourseSchedule cs = new CourseSchedule();
 
         // Example 1
         int numCourses1 = 2;
         int[][] prerequisites1 = {{1, 0}}; // Course 1 depends on Course 0
-        System.out.println(java.util.Arrays.toString(cs.findOrder(numCourses1, prerequisites1))); // Output: [0, 1]
+        System.out.println(cs.canFinish(numCourses1, prerequisites1)); // Output: true
 
         // Example 2
         int numCourses2 = 2;
         int[][] prerequisites2 = {{1, 0}, {0, 1}}; // Circular dependency
-        System.out.println(java.util.Arrays.toString(cs.findOrder(numCourses2, prerequisites2))); // Output: []
+        System.out.println(cs.canFinish(numCourses2, prerequisites2)); // Output: false
 
         // Example 3
         int numCourses3 = 5;
         int[][] prerequisites3 = {{0, 1}, {1, 2}, {2, 3}, {3, 4}}; // Linear dependency
-        System.out.println(java.util.Arrays.toString(cs.findOrder(numCourses3, prerequisites3))); // Output: [1, 2, 3, 4, 0]
+        System.out.println(cs.canFinish(numCourses3, prerequisites3)); // Output: true
 
         // Example 4
         int numCourses4 = 3;
         int[][] prerequisites4 = {{0, 1}, {1, 2}, {2, 0}}; // Circular dependency
-        System.out.println(java.util.Arrays.toString(cs.findOrder(numCourses4, prerequisites4))); // Output: []
+        System.out.println(cs.canFinish(numCourses4, prerequisites4)); // Output: false
     }
 
-
-    public int[] findOrder(int numCourses, int[][] prerequisites) {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
         //form a graph
         List<List<Integer>> adj = new ArrayList<>();
 
@@ -41,8 +40,8 @@ public class CourseScheduleII {
 
         int m = prerequisites.length;
         for (int i = 0; i < m; i++) {
-            adj.get(prerequisites[i][1])
-                    .add(prerequisites[i][0]);
+            adj.get(prerequisites[i][0])
+                    .add(prerequisites[i][1]);
         }
 
         //topological sort with bfs
@@ -74,9 +73,9 @@ public class CourseScheduleII {
         }
 
         if (topo.size() == numCourses) {
-            return topo.stream().mapToInt(i -> i).toArray();
+            return true;
         }
-        return new int[0];
+        return false;
 
     }
 }
