@@ -32,51 +32,47 @@ public class CourseScheduleII {
 
 
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        //form a graph
-        List<List<Integer>> adj = new ArrayList<>();
-
-        for (int i = 0; i < numCourses; i++) {
+        List<List<Integer>> adj=new ArrayList<>();
+        for(int i=0;i<numCourses;i++){
             adj.add(new ArrayList<>());
         }
 
-        int m = prerequisites.length;
-        for (int i = 0; i < m; i++) {
-            adj.get(prerequisites[i][1])
-                    .add(prerequisites[i][0]);
+        int m=prerequisites.length;
+        for(int i=0;i<m;i++){
+            adj.get(prerequisites[i][1]).add(prerequisites[i][0]);
         }
 
-        //topological sort with bfs
-        int indegree[] = new int[numCourses];
-        for (int i = 0; i < numCourses; i++) {
-            for (int it : adj.get(i)) {
+        //topo with bfs
+        int indegree[]=new int[numCourses];
+        for(int i=0;i<indegree.length;i++){
+            for(int it:adj.get(i)){
                 indegree[it]++;
             }
         }
 
-        Queue<Integer> queue = new LinkedList<>();
-        for (int i = 0; i < numCourses; i++) {
-            if (indegree[i] == 0) {
+        Queue<Integer> queue=new LinkedList<>();
+        for(int i=0;i<indegree.length;i++){
+            if(indegree[i]==0){
                 queue.add(i);
             }
         }
-        List<Integer> topo = new ArrayList<>();
-        //O(V+e)
-        while (!queue.isEmpty()) {
-            int node = queue.peek();
-            queue.remove();
+
+        List<Integer> topo=new ArrayList<>();
+        while (!queue.isEmpty()){
+            int node=queue.poll();
             topo.add(node);
-            for (int it : adj.get(node)) {
+            for(int it:adj.get(node)){
                 indegree[it]--;
-                if (indegree[it] == 0) {
+                if(indegree[it]==0){
                     queue.add(it);
                 }
             }
         }
+        if(topo.size()==numCourses){
+            return topo.stream().mapToInt(i->i).toArray();
+        }else return new int[]{};
 
-        if (topo.size() == numCourses) {
-            return topo.stream().mapToInt(i -> i).toArray();
-        }
-        return new int[0];
+
 
     }
 }

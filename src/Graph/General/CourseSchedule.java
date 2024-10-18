@@ -31,7 +31,6 @@ public class CourseSchedule {
     }
 
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        //form a graph
         List<List<Integer>> adj = new ArrayList<>();
 
         for (int i = 0; i < numCourses; i++) {
@@ -39,31 +38,33 @@ public class CourseSchedule {
         }
 
         int m = prerequisites.length;
+
         for (int i = 0; i < m; i++) {
-            adj.get(prerequisites[i][0])
-                    .add(prerequisites[i][1]);
+            adj.get(prerequisites[i][0]).add(prerequisites[i][1]);
         }
 
-        //topological sort with bfs
+        //topo with bfs
         int indegree[] = new int[numCourses];
-        for (int i = 0; i < numCourses; i++) {
+        for (int i = 0; i < indegree.length; i++) {
             for (int it : adj.get(i)) {
                 indegree[it]++;
             }
         }
 
+
         Queue<Integer> queue = new LinkedList<>();
-        for (int i = 0; i < numCourses; i++) {
+
+        for (int i = 0; i < indegree.length; i++) {
             if (indegree[i] == 0) {
-                queue.add(i);
+                queue.add(i);//index means node
             }
         }
+
         List<Integer> topo = new ArrayList<>();
-        //O(V+e)
         while (!queue.isEmpty()) {
-            int node = queue.peek();
-            queue.remove();
+            int node = queue.poll();
             topo.add(node);
+
             for (int it : adj.get(node)) {
                 indegree[it]--;
                 if (indegree[it] == 0) {
@@ -72,10 +73,10 @@ public class CourseSchedule {
             }
         }
 
-        if (topo.size() == numCourses) {
+        if (topo.size() == numCourses)
             return true;
-        }
         return false;
+
 
     }
 }
