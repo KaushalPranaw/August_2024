@@ -8,31 +8,60 @@ public class GasStation {
         System.out.println(new GasStation().canCompleteCircuit(gas, cost));
     }
 
-    public int canCompleteCircuit(int[] gas, int[] cost) {
-        /*n: The number of gas stations (gas.length).
-          totalDiff: Keeps track of the total difference between the gas available and the gas cost across all stations. It helps check if a solution is possible.
-          fuel: Tracks the amount of fuel left as we simulate traveling from one station to the next.
-          index: This is the potential starting station index. Initially set to 0.*/
-
-        int startIndex = 0, n = gas.length, fuel = 0, totalDiff = 0;
-        //if totalDiff is coming negative then we can return -1
+    //brute force
+    /*public int canCompleteCircuit(int[] gas, int[] cost) {
+        int n = gas.length;
         for (int i = 0; i < n; i++) {
-            int diff = gas[i] - cost[i];
-            totalDiff += diff;
+            if (gas[i] < cost[i])
+                continue;
 
-            fuel += diff;
-            if (fuel < 0) {
-                startIndex = i + 1;
-                fuel = 0;
+            int j = (i + 1) % n;//gola ghumne k liye
+            int costForMovingThisStation = cost[i];
+            int gasEarnedFromStationJ = gas[j];
+
+            int curGas = gas[i] - costForMovingThisStation + gasEarnedFromStationJ;
+            while (j != i) {
+                if (curGas < cost[j])
+                    break;
+
+                int costForMovingFromThisJ = cost[j];
+                j = (j + 1) % n;
+                int gasEarnedInNextStationJ = gas[j];
+
+                curGas = curGas - costForMovingFromThisJ + gasEarnedInNextStationJ;
+            }
+            if (i == j)
+                return j;
+
+        }
+        return -1;
+
+    }*/
+
+
+    //greedy sol
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        int n = gas.length;
+        int totalKharcha = 0;
+        int totalKamai = 0;
+        for (int i = 0; i < n; i++) {
+            totalKharcha += cost[i];
+            totalKamai += gas[i];
+        }
+        if (totalKharcha > totalKamai) {
+            return -1;
+        }
+        int total = 0;
+        int result_index = 0;
+        for (int i = 0; i < n; i++) {
+            total += gas[i] - cost[i];
+            if (total < 0) {
+                result_index = i + 1;
+                total = 0;
             }
         }
+        return result_index;
 
-        if (totalDiff < 0) {
-            return -1;
-            //means no output
-        } else {
-            return startIndex;
-        }
 
     }
 }
