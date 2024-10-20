@@ -14,45 +14,40 @@ public class SpiralMatrix {
     }
 
     public List<Integer> spiralOrder(int[][] matrix) {
-        int m = matrix.length;
-        int n = matrix[0].length;
-        List<Integer> ans = new ArrayList<>();
+       int m=matrix.length;
+       int n=matrix[0].length;
+       List<Integer> ans=new ArrayList<>();
+       int l=0, r=n-1, u=0, d=m-1;
+       while (l<=r && u<=d){
+           //l->r and u constant
+           for(int i=l;i<=r;i++){
+               ans.add(matrix[u][i]);
+           }
+           u++;
 
-        int left = 0, right = n - 1;
-        int top = 0, bottom = m - 1;
+           //u->d and r is constant
+           for(int i=u;i<=d;i++){
+               ans.add(matrix[i][r]);
+           }
+           r--;
 
-        while (top <= bottom && left <= right) {
-            //left to right - (top is constant)
-            for (int i = left; i <= right; i++) {
-                ans.add(matrix[top][i]);
-            }
-            top++;
+           if(u<=d){
+               //r->l and d is constant
+               for(int i=r;i>=l;i--){
+                   ans.add(matrix[d][i]);
+               }
+               d--;
+           }
 
-            //top to bottom - (right is constant)
-            for (int i = top; i <= bottom; i++) {
-                ans.add(matrix[i][right]);
-            }
-            right--;
-
-            if (top <= bottom) {
-                //right to left - (bottom is constant)
-                for (int i = right; i >= left; i--) {
-                    ans.add(matrix[bottom][i]);
-                }
-                bottom--;
-            }
-
-
-            if (left <= right) {
-                //bottom to top - (left is constant)
-                for (int i = bottom; i >= top; i--) {
-                    ans.add(matrix[i][left]);
-                }
-                left++;
-            }
-
-        }
-        return ans;
+           if(l<=r){
+               //d->u and l constant
+               for(int i=d;i>=u;i--){
+                   ans.add(matrix[i][l]);
+               }
+               l++;
+           }
+       }
+       return ans;
 
 
     }
