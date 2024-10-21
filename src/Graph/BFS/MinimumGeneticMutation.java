@@ -33,38 +33,38 @@ public class MinimumGeneticMutation {
     }
 
     public int minMutation(String startGene, String endGene, String[] bank) {
-        Set<String> bankSet = new HashSet<>(Arrays.asList(bank));
-        Set<String> visited = new HashSet<>();
-        Queue<String> queue = new LinkedList<>();
+        Set<String> bankSet=new HashSet<>(Arrays.asList(bank));
+        Set<String> visited=new HashSet<>();
 
+        //bfs
+        Queue<String> queue=new LinkedList<>();
         queue.add(startGene);
         visited.add(startGene);
-        int level = 0;
 
-        while (!queue.isEmpty()) {
-            int n = queue.size();
-            for (int i = 0; i < n; i++) {
-                String curr = queue.poll();
-                if (curr.equals(endGene)) {
+        int level=0;
+        while (!queue.isEmpty()){
+            int n=queue.size();
+            for(int i=0;i<n;i++){
+                String cur=queue.poll();
+                if(cur.equals(endGene)){
                     return level;
                 }
 
-                for (char ch : "ACGT".toCharArray()) {
-                    for (int j = 0; j < curr.length(); j++) {
-                        StringBuilder neighbour = new StringBuilder(curr);
-                        neighbour.setCharAt(j, ch);
-                        String neighbourStr = neighbour.toString();
-                        if (!visited.contains(neighbourStr)
-                                && bankSet.contains(neighbourStr)) {
-                            visited.add(neighbourStr);
-                            queue.add(neighbourStr);
+                for(char ch: "ACGT".toCharArray()){
+                    for(int j=0;j<cur.length();j++){
+                        StringBuilder sb=new StringBuilder(cur);
+                        sb.setCharAt(j, ch);
+                        String finalCur=sb.toString();
+                        if(!visited.contains(finalCur)&& bankSet.contains(finalCur)){
+                            visited.add(finalCur);
+                            queue.add(finalCur);
                         }
                     }
                 }
+
             }
             level++;
         }
         return -1;
-
     }
 }
