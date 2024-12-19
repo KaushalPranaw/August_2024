@@ -3,9 +3,34 @@ package Leetcode.TwoPointers;
 public class ContainerWithMostWater {
     public static void main(String[] args) {
         int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+
+        //output: 49
         System.out.println(new ContainerWithMostWater().maxArea(height));
     }
 
+    private int maxArea(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int maxArea = Integer.MIN_VALUE;
+        while (left < right) {
+            int area = (right - left) * (Math.min(height[left], height[right]));
+            maxArea = Math.max(maxArea, area);
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return maxArea;
+    }
+
+
+
+
+
+
+
+    /*
     public int maxArea(int[] height) {
         int left = 0, right = height.length - 1, maxArea = 0;
         while (left < right) {
@@ -23,5 +48,5 @@ public class ContainerWithMostWater {
         }
         return maxArea;
 
-    }
+    }*/
 }
