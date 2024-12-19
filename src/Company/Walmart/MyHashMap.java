@@ -11,10 +11,10 @@ public class MyHashMap<K, V> {
     // Array of linked lists (buckets) to store key-value pairs
     private LinkedList<Entry<K, V>>[] table;
 
-    // The current size of the HashMap
+    // The current size of the Leetcode.HashMap
     private int size;
 
-    // Constructor to initialize the HashMap
+    // Constructor to initialize the Leetcode.HashMap
     public MyHashMap() {
         table = new LinkedList[DEFAULT_BUCKET_SIZE];
         size = 0;
@@ -26,7 +26,7 @@ public class MyHashMap<K, V> {
         return Math.abs(key.hashCode()) % table.length;
     }
 
-    // Method to add a key-value pair to the HashMap
+    // Method to add a key-value pair to the Leetcode.HashMap
     public void put(K key, V value) {
         int index = getBucketIndex(key);
 
@@ -80,12 +80,12 @@ public class MyHashMap<K, V> {
         }
     }
 
-    // Method to check if the HashMap contains a specific key
+    // Method to check if the Leetcode.HashMap contains a specific key
     public boolean containsKey(K key) {
         return get(key) != null;
     }
 
-    // Method to return the current size of the HashMap
+    // Method to return the current size of the Leetcode.HashMap
     public int size() {
         return size;
     }
@@ -101,7 +101,7 @@ public class MyHashMap<K, V> {
         }
     }
 
-    // Main method to test the custom HashMap implementation
+    // Main method to test the custom Leetcode.HashMap implementation
     public static void main(String[] args) {
         MyHashMap<String, Integer> map = new MyHashMap<>();
 
@@ -122,8 +122,8 @@ public class MyHashMap<K, V> {
         map.remove("banana");
         System.out.println("banana after removal: " + map.get("banana")); // Output: banana after removal: null
 
-        // Check the size of the HashMap
-        System.out.println("Size of HashMap: " + map.size()); // Output: Size of HashMap: 2
+        // Check the size of the Leetcode.HashMap
+        System.out.println("Size of Leetcode.HashMap: " + map.size()); // Output: Size of Leetcode.HashMap: 2
 
         // Check if a key exists
         System.out.println("Contains 'orange': " + map.containsKey("orange")); // Output: Contains 'orange': true

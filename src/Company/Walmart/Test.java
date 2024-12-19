@@ -14,7 +14,7 @@ public class Test {
                 List.of(0, 1),
                 List.of(1, 8)
         );
-        /*Map<Integer, Integer> managerCount=new HashMap<>();
+        /*Map<Integer, Integer> managerCount=new Leetcode.HashMap<>();
         for(List<Integer> pair: input){
             int mgr=pair.get(1);
             managerCount.put(mgr, managerCount.getOrDefault(mgr, 0)+1);

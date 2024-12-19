@@ -144,7 +144,7 @@ in starting one unit
   f
 
 //possible values jump
-map<int, set<int>> map=new HashMap<>();
+map<int, set<int>> map=new Leetcode.HashMap<>();
 for(int num: arr){
 	map.put(num, new HashSet<>());
 }

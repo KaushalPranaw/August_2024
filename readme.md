@@ -5,9 +5,9 @@ DSA Preparation Schedule:
 - August 17-18: Array/String (12 questions each day) - half done
 - August 19: Two Pointers
 - August 20: Sliding Window
-- August 21: Matrix
+- August 21: Leetcode.Matrix
 - August 22-23: Hashmap
-- August 24: Intervals
+- August 24: Leetcode.Intervals
 - August 25: Buffer Day & Revision
 - August 26: Stack
 - August 27-28: Linked List
@@ -15,18 +15,18 @@ DSA Preparation Schedule:
 - August 31: Binary Tree (BFS)
 - September 1: Buffer Day
 - September 2: Binary Search Tree
-- September 3-4: Graph (General)
-- September 5: Graph (BFS)
+- September 3-4: Leetcode.Graph (General)
+- September 5: Leetcode.Graph (BFS)
 - September 6: Trie
 - September 7-8: Buffer Days
-- September 9-10: Backtracking
+- September 9-10: Leetcode.Backtracking
 - September 11: Divide & Conquer
 - September 12: Kadane's Algorithm
 - September 13-14: Binary Search
 - September 15: Heap
 - September 16: Bit Manipulation
 - September 17: Buffer Day
-- September 18: Math
+- September 18: Leetcode.Math
 - September 19: 1D Dynamic Programming (DP)
 - September 20: Multidimensional DP
 
