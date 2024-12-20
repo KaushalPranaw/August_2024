@@ -1,4 +1,4 @@
-package DesignPatterns.AbstractFactory;
+package DesignPatterns.Creational.AbstractFactory;
 
 public interface VehiclePartsFactory {
     Tire createTire();
