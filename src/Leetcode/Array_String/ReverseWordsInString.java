@@ -8,12 +8,12 @@ public class ReverseWordsInString {
     }
 
     public String reverseWords(String s) {
-        String[] sa = s.split(" ");
+        String[] sa = s.trim().split(" ");
         int left = 0, right = sa.length - 1;
         while (left < right) {
-            String t = sa[left];
+            String temp = sa[left];
             sa[left] = sa[right];
-            sa[right] = t;
+            sa[right] = temp;
             left++;
             right--;
         }
