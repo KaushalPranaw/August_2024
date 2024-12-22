@@ -18,19 +18,17 @@ public class MinimumSizeSubarraySum {
     //and try to increase left pointer if check sum>=target
     //this way we can find minimum length
     public int minSubArrayLen(int target, int[] nums) {
-        int left = 0;
-        int right = 0;
+        int left = 0, right = 0;
         int minLen = Integer.MAX_VALUE;
         int sum = 0;
-        while (right < nums.length) {
+        for (right = 0; right < nums.length; right++) {
             sum += nums[right];
             while (sum >= target) {
                 minLen = Math.min(minLen, right - left + 1);
                 sum -= nums[left];
                 left++;
             }
-            right++;
         }
-        return minLen == Integer.MAX_VALUE ? 0 : minLen;
+        return minLen != Integer.MAX_VALUE ? minLen : 0;
     }
 }
