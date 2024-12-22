@@ -16,7 +16,7 @@ public class SetMatrixZeroes {
 
     }
     //constant space
-    public void setZeroes(int[][] matrix) {
+    /*public void setZeroes(int[][] matrix) {
         if (matrix == null || matrix.length == 0) return;
 
         int m = matrix.length;
@@ -73,35 +73,56 @@ public class SetMatrixZeroes {
                 matrix[i][0] = 0;
             }
         }
-    }
+    }*/
 
+    public void setZeroes(int[][] matrix) {
+        if (matrix.length == 0 || matrix == null)
+            return;
 
-    //T(m+n)
-    /*public void setZeroes(int[][] matrix) {
-        int rows = matrix.length;
-        int cols = matrix[0].length;
+        boolean isFirstRow = false;
+        boolean isFirstCol = false;
+        int m = matrix.length;
+        int n = matrix[0].length;
 
-        Set<Integer> rowSet = new HashSet<>();
-        Set<Integer> colSet = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            if (matrix[0][i] == 0) {
+                isFirstRow = true;
+                break;
+            }
+        }
+        for (int i = 0; i < m; i++) {
+            if (matrix[i][0] == 0) {
+                isFirstCol = true;
+                break;
+            }
+        }
 
-        //check whether 0 exist
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
                 if (matrix[i][j] == 0) {
-                    rowSet.add(i);
-                    colSet.add(j);
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
                 }
             }
         }
 
-        //now again iterate and check in set if contains the mark as 0
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (rowSet.contains(i) || colSet.contains(j)) {
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
                     matrix[i][j] = 0;
                 }
-
             }
         }
-    }*/
+
+        if (isFirstRow) {
+            for (int i = 0; i < n; i++) {
+                matrix[0][i] = 0;
+            }
+        }
+        if (isFirstCol) {
+            for (int i = 0; i < m; i++) {
+                matrix[i][0] = 0;
+            }
+        }
+    }
 }
