@@ -6,6 +6,30 @@ public class GasStation {
         System.out.println(new GasStation().canCompleteCircuit(gas, cost));
     }
 
+    private int canCompleteCircuit(int[] gas, int[] cost) {
+        int n = gas.length;
+        int totalKamai = 0;
+        int totalKharcha = 0;
+        for (int i = 0; i < n; i++) {
+            totalKharcha += cost[i];
+            totalKamai += gas[i];
+        }
+        if (totalKharcha > totalKamai) {
+            return -1;
+        }
+
+        int total = 0;
+        int index = 0;
+        for (int i = 0; i < n; i++) {
+            total += gas[i] - cost[i];
+            if (total < 0) {
+                index = i + 1;
+                total = 0;
+            }
+        }
+        return index;
+    }
+
     //brute force
     /*public int canCompleteCircuit(int[] gas, int[] cost) {
         int n = gas.length;
@@ -37,29 +61,4 @@ public class GasStation {
     }*/
 
 
-    //greedy sol
-    public int canCompleteCircuit(int[] gas, int[] cost) {
-        int n = gas.length;
-        int totalKharcha = 0;
-        int totalKamai = 0;
-        for (int i = 0; i < n; i++) {
-            totalKharcha += cost[i];
-            totalKamai += gas[i];
-        }
-        if (totalKharcha > totalKamai) {
-            return -1;
-        }
-        int total = 0;
-        int result_index = 0;
-        for (int i = 0; i < n; i++) {
-            total += gas[i] - cost[i];
-            if (total < 0) {
-                result_index = i + 1;
-                total = 0;
-            }
-        }
-        return result_index;
-
-
-    }
 }

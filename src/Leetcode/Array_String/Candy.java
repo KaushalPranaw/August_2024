@@ -1,6 +1,7 @@
 package Leetcode.Array_String;
 
 import java.util.Arrays;
+import java.util.Map;
 
 public class Candy {
     public static void main(String[] args) {
@@ -9,18 +10,20 @@ public class Candy {
     }
 
     public int candy(int[] ratings) {
-        int[] ans = new int[ratings.length];
+        int n = ratings.length;
+        int ans[] = new int[n];
         Arrays.fill(ans, 1);
-        //left to right
-        for (int i = 1; i < ratings.length; i++) {
+        //l->r
+        for (int i = 1; i < n; i++) {
             if (ratings[i] > ratings[i - 1]) {
                 ans[i] = ans[i - 1] + 1;
             }
         }
-        //right to left
-        for (int i = ratings.length - 1; i > 0; i--) {
-            if (ratings[i] < ratings[i - 1] && ans[i] >= ans[i - 1]) {
-                ans[i - 1] = ans[i] + 1;
+
+        //r->l
+        for (int i = n - 2; i >= 0; i--) {
+            if (ratings[i] > ratings[i + 1]) {
+                ans[i] = Math.max(ans[i + 1] + 1, ans[i]);
             }
         }
 
